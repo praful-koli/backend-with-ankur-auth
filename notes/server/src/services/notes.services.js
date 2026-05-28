@@ -58,6 +58,14 @@ const updateNoteService = async (noteId, description, userId) => {
   note.description = description;
   await note.save();
   return note;
-  
+
 };
-export { createNoteService, getNotesService, updateNoteService };
+
+const deleteNoteService = async (noteId, userId) => {
+    const note = await noteModel.findOne({_id: noteId, user: userId})
+    if(!note){
+        throw new ApiError(404, "Note not found")
+    }
+    await noteModel.findByIdAndDelete(note._id)
+}
+export { createNoteService, getNotesService, updateNoteService, deleteNoteService };
