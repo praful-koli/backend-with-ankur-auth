@@ -1,6 +1,7 @@
 import asycHandler from "../utils/asycHandler.js";
-import { createNoteService } from "../services/notes.services.js";
+import { createNoteService, getNotesService} from "../services/notes.services.js";
 
+// Controller for creating a new note
 const createNote = asycHandler(async(req, res)=>{
     const noteData = req.body;
     const userId = req.user.userId;
@@ -13,4 +14,18 @@ const createNote = asycHandler(async(req, res)=>{
     });
 });
 
-export { createNote }
+
+// implement getNotesService and getNotes controller
+const getNotes = asycHandler(async(req, res)=> {
+    const userId = req.user.userId;
+    const notes = await getNotesService(userId);
+
+    res.status(200).json({
+        success: true,
+        message: "Notes fetched successfully",
+        notes
+    });
+});
+
+
+export { createNote, getNotes }

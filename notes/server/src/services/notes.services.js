@@ -34,4 +34,8 @@ const createNoteService = async(noteData)=>{
 
 }
 
-export { createNoteService }
+const getNotesService = async(userId)=>{
+    let notes = await noteModel.find({ user: userId });
+    return notes;
+}
+export { createNoteService , getNotesService }

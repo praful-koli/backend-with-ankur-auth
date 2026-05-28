@@ -1,6 +1,6 @@
 import express from 'express'
 const router = express.Router()
-import { createNote } from '../controllers/notes.controller.js'
+import { createNote, getNotes } from '../controllers/notes.controller.js'
 import identifyUser from '../middlewares/auth.middleware.js'
 
 /**
@@ -11,7 +11,13 @@ import identifyUser from '../middlewares/auth.middleware.js'
 
 router.post('/create', identifyUser, createNote)
 
-// router.get('/notes', getNotes)
+/**
+ * @route GET /api/notes
+ * @description Get all notes for the authenticated user
+ * @access Private
+ */
+router.get('/get-notes', identifyUser, getNotes)
+
 
 // router.get('/notes/:id', getNoteById)
 
