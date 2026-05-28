@@ -1,6 +1,6 @@
 import express from 'express'
 const router = express.Router()
-import { createNote, getNotes } from '../controllers/notes.controller.js'
+import { createNote, getNotes ,updateNote} from '../controllers/notes.controller.js'
 import identifyUser from '../middlewares/auth.middleware.js'
 
 /**
@@ -19,9 +19,13 @@ router.post('/create', identifyUser, createNote)
 router.get('/get-notes', identifyUser, getNotes)
 
 
-// router.get('/notes/:id', getNoteById)
+/**
+ *  @route path /api/notes/:id
+ *  @description update description of note by id
+ *  @access Private
+ */
 
-// router.patch('/notes/:id', updateNote)
+router.patch('/update-notes/:id',  identifyUser, updateNote)
 
 // router.delete('/delete/:id', deleteNote)
 

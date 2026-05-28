@@ -1,5 +1,5 @@
 import asycHandler from "../utils/asycHandler.js";
-import { createNoteService, getNotesService} from "../services/notes.services.js";
+import { createNoteService, getNotesService , updateNoteService} from "../services/notes.services.js";
 
 // Controller for creating a new note
 const createNote = asycHandler(async(req, res)=>{
@@ -27,5 +27,18 @@ const getNotes = asycHandler(async(req, res)=> {
     });
 });
 
+// implement updateNoteService and updateNote controller
+const updateNote = asycHandler(async(req, res) => {
+    const noteId = req.params.id;
+    const { description } = req.body;
+    const userId = req.user.userId;
+    const updatedNote = await updateNoteService(noteId, description, userId);
 
-export { createNote, getNotes }
+    res.status(200).json({
+        success: true,
+        message: "Note updated successfully",
+        note: updatedNote
+    });
+});
+
+export { createNote, getNotes, updateNote }
