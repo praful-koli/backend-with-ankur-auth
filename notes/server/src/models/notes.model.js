@@ -10,6 +10,8 @@ const noteSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    // Reference to the user who created the note
+    // This creates a relationship between the note and the user, allowing us to easily query notes by user
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'users',
