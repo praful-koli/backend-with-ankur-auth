@@ -1,5 +1,5 @@
 import asycHandler from "../utils/asycHandler.js";
-import { createNoteService, getNotesService , updateNoteService , deleteNoteService} from "../services/notes.services.js";
+import { createNoteService, getNotesService , updateNoteService , deleteNoteService, delelteAllNoteServices} from "../services/notes.services.js";
 
 // Controller for creating a new note
 const createNote = asycHandler(async(req, res)=>{
@@ -55,6 +55,17 @@ const deleteNote = asycHandler(async(req, res) => {
     })
 })
     
+// implement delelte-all note controller
 
+const delelteAllNote = asycHandler(async(req, res) => {
+    const userId= req.user.userId 
+    
+    await delelteAllNoteServices(userId)
 
-export { createNote, getNotes, updateNote , deleteNote}
+    res.status(200).json({
+        success : true,
+        message : "Notes deleted successfully"
+    })
+})
+
+export { createNote, getNotes, updateNote , deleteNote , delelteAllNote}

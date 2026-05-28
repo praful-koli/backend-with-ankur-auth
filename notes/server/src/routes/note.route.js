@@ -1,6 +1,6 @@
 import express from 'express'
 const router = express.Router()
-import { createNote, getNotes ,updateNote , deleteNote} from '../controllers/notes.controller.js'
+import { createNote, getNotes ,updateNote , deleteNote ,delelteAllNote} from '../controllers/notes.controller.js'
 import identifyUser from '../middlewares/auth.middleware.js'
 
 /**
@@ -20,7 +20,7 @@ router.get('/get-notes', identifyUser, getNotes)
 
 
 /**
- *  @route path /api/update-notes/:id
+ *  @route PATCH /api/update-notes/:id
  *  @description update description of note by id
  *  @access Private
  */
@@ -36,6 +36,12 @@ router.patch('/update-notes/:id',  identifyUser, updateNote)
 
 router.delete('/delete/:id',identifyUser, deleteNote)
 
-// router.delete('/delete/', deleteNote)
+/**
+ * @route DELETE /api/notes/delete-all
+ * @description Delete all notes
+ * @access Private
+ */
+
+router.delete('/delete-all', identifyUser,  delelteAllNote)
 
 export default router

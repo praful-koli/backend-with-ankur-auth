@@ -68,4 +68,8 @@ const deleteNoteService = async (noteId, userId) => {
     }
     await noteModel.findByIdAndDelete(note._id)
 }
-export { createNoteService, getNotesService, updateNoteService, deleteNoteService };
+
+const delelteAllNoteServices = async (userId) => {
+    let notes = await noteModel.deleteMany({user:userId})
+}
+export { createNoteService, getNotesService, updateNoteService, deleteNoteService ,delelteAllNoteServices};
