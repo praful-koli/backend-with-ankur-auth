@@ -89,7 +89,7 @@ notes-server/
 # Clone the Project
 
 ```bash
-git clone https://github.com/your-username/notes-backend.git
+git clone https://github.com/praful-koli/backend-with-ankur-auth.git
 ```
 
 ---
@@ -97,7 +97,7 @@ git clone https://github.com/your-username/notes-backend.git
 # Move into Project Folder
 
 ```bash
-cd notes-backend
+cd notes.server
 ```
 
 ---
@@ -170,12 +170,6 @@ Paste it inside `.env` file.
 npm run dev
 ```
 
-## Production Mode
-
-```bash
-npm start
-```
-
 ---
 
 # Server Running
@@ -238,12 +232,12 @@ POST /api/auth/login
 # Notes Routes
 
 > All notes routes are protected.
-> Token is required in headers.
+> Token is required .
 
 Example:
 
-```http
-Authorization: Bearer your_jwt_token
+```
+Token : token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YTE4MzQ2M2I0MmI1ODQ4MzdjZmUyNjQiLCJpYXQiOjE3Nzk5NzI0MzMsImV4cCI6MTc4MDA1ODgzM30.X7XacAk2LXjg86TCtTQBFjOLFNHVDEPOxWIfYp82Pi0 
 ```
 
 ---
@@ -347,9 +341,6 @@ This middleware checks:
 You can test the API using:
 
 - Postman
-- Thunder Client
-- Insomnia
-
 ---
 
 # Common Errors
@@ -374,13 +365,8 @@ Make sure:
 
 ---
 
-
 # Author
 
 Praful Koli
 
----
 
-# License
-
-This project is licensed under the MIT License.
